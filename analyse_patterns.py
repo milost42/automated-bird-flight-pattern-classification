@@ -5,7 +5,7 @@ Filename: analyse_patterns.py
 Author: Mili Ostojic
 Date: 09-01-2026
 Version: 1.0
-Description: Analyse a flight pattern to get its features
+Description: Analyse a flight pattern to get its features for species classification
 """
 
 

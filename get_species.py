@@ -14,7 +14,7 @@ def random_forest(features):
     """Predict species from the features of a flight pattern"""
 
     # Load Model 3
-    rf = joblib.load("m3_best.joblib")
+    rf = joblib.load("model3_best.joblib")
 
     # Predict species
     predicted_label = rf.predict(np.array([features]))

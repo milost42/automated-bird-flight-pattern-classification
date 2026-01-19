@@ -14,82 +14,89 @@ Description: Get bird/non predictions for each frame in an input video using Mod
 def model1_roc(results, threshold):
     """Get bird vs non prediction from all the possible predictions for a single frame"""
 
-    # Load Model 1 from TorchHub
-    utils = torch.hub.load('NVIDIA/DeepLearningExamples:torchhub', 'nvidia_ssd_processing_utils')
-    classes_to_labels = utils.get_coco_object_dictionary()
+    # Convert object detection model to binary classifier
+    # M1 can fail to identify a bounding box, resulting in an automatic non class unless the threshold is 0.
+    if threshold == 0.:
+        predicted = "bird"
 
-    # Break down results into bounding boxes, classes and associated confidences
-    bboxes, classes, confidences = results
+    # Get prediction
+    else:
+        # Load Model 1 from TorchHub
+        utils = torch.hub.load('NVIDIA/DeepLearningExamples:torchhub', 'nvidia_ssd_processing_utils')
+        classes_to_labels = utils.get_coco_object_dictionary()
 
-    # Check if any classes have been predicted
-    if len(classes) > 0:
+        # Break down results into bounding boxes, classes and associated confidences
+        bboxes, classes, confidences = results
 
-        # Initialise variables to be for the "non" class
-        predicted = "non"
-        bird_bbox = [0, 0, 0, 0]
-        bird_class = False
+        # Check if any classes have been predicted
+        if len(classes) > 0:
 
-        # Initialise variables for max bird class as zero
-        max_bird_idx = 0
-        max_bird_confidence = 0
+            # Initialise variables to be for the "non" class
+            predicted = "non"
+            bird_bbox = [0, 0, 0, 0]
+            bird_class = False
 
-        # Cycle through all predicted classes
-        for i in range(len(classes)):
+            # Initialise variables for max bird class as zero
+            max_bird_idx = 0
+            max_bird_confidence = 0
 
-            # Get text label from COCO dictionary
-            label = classes_to_labels[classes[i] - 1]
-            print(label, confidences[i])
+            # Cycle through all predicted classes
+            for i in range(len(classes)):
 
-            # Check if the predicted class is "bird" and if it has a higher confidence than previous "bird" labels
-            if label == "bird" and confidences[i] > max_bird_confidence:
+                # Get text label from COCO dictionary
+                label = classes_to_labels[classes[i] - 1]
+                print(label, confidences[i])
 
-                # Update variables
-                max_bird_idx = i
-                max_bird_confidence = confidences[i]
-                bird_class = True
+                # Check if the predicted class is "bird" and if it has a higher confidence than previous "bird" labels
+                if label == "bird" and confidences[i] > max_bird_confidence:
 
-        # Check if at least one of the predicted classes is "bird"
-        if bird_class:
-            print(max_bird_idx, max_bird_confidence)
+                    # Update variables
+                    max_bird_idx = i
+                    max_bird_confidence = confidences[i]
+                    bird_class = True
 
-            # Check if the maximum confidence for a "bird" class is greater than the threshold
-            if max_bird_confidence >= threshold:
+            # Check if at least one of the predicted classes is "bird"
+            if bird_class:
+                print(max_bird_idx, max_bird_confidence)
 
-                # If the confidence is greater than the threshold, the final prediction is "bird" with its associated
-                # bounding box
-                predicted = "bird"
-                bird_bbox = bboxes[max_bird_idx]
+                # Check if the maximum confidence for a "bird" class is greater than the threshold
+                if max_bird_confidence >= threshold:
 
-                # UNCOMMENT TO PLOT EACH "BIRD" FRAME AND ASSOCIATED BOUNDING BOX
-                # fig, ax = plt.subplots(1)
-                # image = input[0] / 2 + 0.5
-                # ax.imshow(image)
-                # left, bot, right, top = bboxes[max_bird_idx]
-                # x, y, w, h = [val * 300 for val in [left, bot, right - left, top - bot]]
-                # rect = patches.Rectangle((x, y), w, h, linewidth=1, edgecolor='r', facecolor='none')
-                # ax.add_patch(rect)
-                # ax.text(x, y, "{} {:.0f}%".format(classes_to_labels[classes[max_bird_idx] - 1],
-                #                                   confidences[max_bird_idx] * 100),
-                #         bbox=dict(facecolor='white', alpha=0.5))
-                # plt.show()
+                    # If the confidence is greater than the threshold, the final prediction is "bird" with its associated
+                    # bounding box
+                    predicted = "bird"
+                    bird_bbox = bboxes[max_bird_idx]
+
+                    # UNCOMMENT TO PLOT EACH "BIRD" FRAME AND ASSOCIATED BOUNDING BOX
+                    # fig, ax = plt.subplots(1)
+                    # image = input[0] / 2 + 0.5
+                    # ax.imshow(image)
+                    # left, bot, right, top = bboxes[max_bird_idx]
+                    # x, y, w, h = [val * 300 for val in [left, bot, right - left, top - bot]]
+                    # rect = patches.Rectangle((x, y), w, h, linewidth=1, edgecolor='r', facecolor='none')
+                    # ax.add_patch(rect)
+                    # ax.text(x, y, "{} {:.0f}%".format(classes_to_labels[classes[max_bird_idx] - 1],
+                    #                                   confidences[max_bird_idx] * 100),
+                    #         bbox=dict(facecolor='white', alpha=0.5))
+                    # plt.show()
+                # UNCOMMENT TO PLOT EACH "NON" FRAME
+                # else:
+                    # fig, ax = plt.subplots(1)
+                    # image = input[0] / 2 + 0.5
+                    # ax.imshow(image)
+                    # plt.show()
             # UNCOMMENT TO PLOT EACH "NON" FRAME
             # else:
-                # fig, ax = plt.subplots(1)
-                # image = input[0] / 2 + 0.5
-                # ax.imshow(image)
-                # plt.show()
-        # UNCOMMENT TO PLOT EACH "NON" FRAME
-        # else:
-        # fig, ax = plt.subplots(1)
-        # image = input[0] / 2 + 0.5
-        # ax.imshow(image)
-        # plt.show()
-    else:
-        # If no classes are predicted, the final label is "non"
-        predicted = "non"
+            # fig, ax = plt.subplots(1)
+            # image = input[0] / 2 + 0.5
+            # ax.imshow(image)
+            # plt.show()
+        else:
+            # If no classes are predicted, the final label is "non"
+            predicted = "non"
 
-        # Define a bounding box of zeros for a "non" class (it won't be used in subsequent steps)
-        bird_bbox = [0, 0, 0, 0]
+            # Define a bounding box of zeros for a "non" class (it won't be used in subsequent steps)
+            bird_bbox = [0, 0, 0, 0]
 
     # Return the predicted class and associated bounding box
     return predicted, bird_bbox

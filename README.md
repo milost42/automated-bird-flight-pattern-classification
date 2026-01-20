@@ -59,7 +59,7 @@ balanced dataset that have sections in which the bird is not in the frame. Place
 
 ## Model training
 
-M2 was trained using the training dataset linked above and with transfer learning through the detecto module. With all the labels and corresponding images in the same folder (e.g. 'images/', training can be easily acheived with the following (provided GPU capability is enabled):
+M2 was trained using the training dataset linked above and with transfer learning through the detecto module. With all the labels and corresponding images in the same folder (e.g. 'images/'), training can be easily acheived with the following (provided GPU capability is enabled):
 
 ```
 from detecto import core, utils, visualize

@@ -21,7 +21,9 @@ moviepy 2.0.0.dev2
 ## Datasets
 Arrange the datasets in the Datasets folder structure
 
-Other flying objects: https://zenodo.org/records/18281801
+Other flying objects: 10.5281/zenodo.18281800
+M2 training dataset: 10.5281/zenodo.18281930
+M2 full-frame test dataset: 10.5281/zenodo.18282124
 
 ## Description of files
 **generate_5_sec_clip_dataset.py**: Creates a dataset of 5-second clips from the videos in the Final video set folder. 

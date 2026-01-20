@@ -23,7 +23,7 @@ Arrange the datasets in the Datasets folder structure
 
 [Other flying objects](https://zenodo.org/records/18281801)
 
-[M2 training dataset](https://zenodo.org/records/18282125)
+[M2 training dataset](https://zenodo.org/records/18281931)
 
 [M2 full-frame test dataset](https://zenodo.org/records/18282125)
 

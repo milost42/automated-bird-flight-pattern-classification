@@ -56,3 +56,16 @@ balanced dataset that have sections in which the bird is not in the frame. Place
 **model2_weights_final.py**: Weights for Model 2
 
 **model3_best.joblib**: Best example of weights for a species identification model
+
+## Model training
+
+M2 was trained using the training dataset and transfer learning through the detecto module. With all the labels and corresponding images in the same folder (e.g. 'images/', training can be easily acheived with the following (provided GPU capability is enabled):
+
+```
+from detecto import core, utils, visualize
+
+dataset = core.Dataset('images/')
+model = core.Model(['downstroke', 'upstroke'])
+
+model.fit(dataset)
+```

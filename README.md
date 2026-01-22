@@ -1,5 +1,5 @@
 # automated-bird-flight-pattern-classification
-Extraction and classification of bird flight patterns from video. Accompanying paper:
+Extraction and classification of bird flight patterns from video.
 
 ## Installation
 ```git clone https://github.com/milost42/automated-bird-flight-pattern-classification.git```

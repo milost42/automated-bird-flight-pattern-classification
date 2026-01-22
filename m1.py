@@ -4,9 +4,8 @@ import matplotlib.patches as patches
 
 """
 Filename: m1.py
-Author: Mili Ostojic
-Date: 09-01-2026
-Version: 1.0
+Date: 22-01-2026
+Version: 1.0.1
 Description: Get bird/non predictions for each frame in an input video using Model 1
 """
 

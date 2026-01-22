@@ -7,9 +7,8 @@ import pandas as pd
 
 """
 Filename: generate_balanced_dataset.py
-Author: Mili Ostojic
-Date: 09-01-2026
-Version: 1.0
+Date: 22-01-2026
+Version: 1.0.1
 Description: Generate a dataset with a balanced number of clips per species from the 5-second clips dataset
 """
 

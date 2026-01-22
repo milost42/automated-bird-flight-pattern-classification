@@ -10,9 +10,8 @@ import joblib
 
 """
 Filename: cross_validation_species.py
-Author: Mili Ostojic
-Date: 09-01-2026
-Version: 1.0
+Date: 22-01-2026
+Version: 1.0.1
 Description: Perform cross-validation of species identification from the features of the clips in the 5-second clips 
 balanced dataset
 """

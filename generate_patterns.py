@@ -2,9 +2,8 @@ import os
 
 """
 Filename: generate_patterns.py
-Author: Mili Ostojic
-Date: 09-01-2026
-Version: 1.0
+Date: 22-01-2026
+Version: 1.0.1
 Description: Generate the flight patterns for a single clip using the predictions of upstroke/downstroke/non from
 Model 2
 """

@@ -5,9 +5,8 @@ import numpy as np
 
 """
 Filename: generate_features_balanced_dataset.py
-Author: Mili Ostojic
-Date: 09-01-2026
-Version: 1.0
+Date: 22-01-2026
+Version: 1.0.1
 Description: Extract the flight patterns and their features from all the clips in the 5-second clips balanced dataset
 """
 

@@ -19,9 +19,8 @@ from get_species import random_forest
 
 """
 Filename: final_object_version.py
-Author: Mili Ostojic
-Date: 09-01-2026
-Version: 1.0
+Date: 22-01-2026
+Version: 1.0.1
 Description: Bird object containing all the functions required for analysis of an input clip up to and including species 
 identification, as well as all the functions required for testing of each stage of analysis
 """

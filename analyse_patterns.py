@@ -2,9 +2,8 @@ import numpy as np
 
 """
 Filename: analyse_patterns.py
-Author: Mili Ostojic
-Date: 09-01-2026
-Version: 1.0
+Date: 22-01-2026
+Version: 1.0.1
 Description: Analyse a flight pattern to get its features for species classification
 """
 

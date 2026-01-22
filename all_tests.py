@@ -11,9 +11,8 @@ from bird_object_main import Bird
 
 """
 Filename: all_tests.py
-Author: Mili Ostojic
-Date: 09-01-2026
-Version: 1.0
+Date: 22-01-2026
+Version: 1.0.1
 Description: Run all the tests that generated the figures found in the paper
 """
 

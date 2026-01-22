@@ -3,9 +3,8 @@ import math
 
 """
 Filename: generate_5_sec_clip_dataset.py
-Author: Mili Ostojic
-Date: 09-01-2026
-Version: 1.0
+Date: 22-01-2026
+Version: 1.0.1
 Description: Generate 5-second clips from a set of videos separated into species folders
 """
 

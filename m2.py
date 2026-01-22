@@ -2,9 +2,8 @@ from detecto import core, utils, visualize
 
 """
 Filename: m2.py
-Author: Mili Ostojic
-Date: 09-01-2026
-Version: 1.0
+Date: 22-01-2026
+Version: 1.0.1
 Description: Get predictions of upstroke/downstroke/non for each frame in an input clip using Model 2
 """
 

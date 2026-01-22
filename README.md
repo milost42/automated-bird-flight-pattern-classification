@@ -1,9 +1,6 @@
 # automated-bird-flight-pattern-classification
 Extraction and classification of bird flight patterns from video.
 
-## Installation
-```git clone https://github.com/milost42/automated-bird-flight-pattern-classification.git```
-
 ## Install dependencies
 Tested versions:
 sklearn-image 0.22.0
